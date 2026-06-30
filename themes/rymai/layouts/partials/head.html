@@ -1,0 +1,57 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'none';">
+<meta name="color-scheme" content="light dark">
+
+{{- $title       := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) -}}
+{{- $description := or .Params.description .Summary -}}
+{{- $ogImage     := cond (isset .Params "ogimage") (.Params.ogImage | absURL) ("images/og-default.jpg" | absURL) -}}
+{{- $ogLocale    := cond (eq .Language.Lang "de") "de_DE" "en_US" -}}
+
+<!-- Primary -->
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="robots" content="{{ if .Params.noindex }}noindex, nofollow{{ else }}index, follow{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.png" type="image/png">
+
+<!-- Hreflang (multilingual) -->
+{{ range .AllTranslations -}}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{ end -}}
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:type" content="{{ if or .IsHome .IsSection }}website{{ else }}article{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:locale" content="{{ $ogLocale }}">
+{{ range .Translations -}}
+<meta property="og:locale:alternate" content="{{ cond (eq .Language.Lang "de") "de_DE" "en_US" }}">
+{{ end -}}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+<meta name="twitter:image:alt" content="{{ with .Params.ogImageAlt }}{{ . }}{{ else }}{{ $title }}{{ end }}">
+
+<!-- Styles -->
+{{ with resources.Get "scss/main.scss" }}
+  {{ $css := . | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{ else }}
+  {{ warnf "Style resource not found!" }}
+{{ end }}
+
+{{ with resources.Get "aos-2.3.4/dist/aos.css" }}
+  {{ $aosCSS := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $aosCSS.RelPermalink }}" integrity="{{ $aosCSS.Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+

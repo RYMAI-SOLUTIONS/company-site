@@ -1,0 +1,6 @@
+<div>
+    <a href="{{ "/" | relLangURL }}/">
+        <img src="{{ "images/Logo-300w.png" | relURL }}" alt="Logo" class="logo" width="100">
+    </a>
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>
