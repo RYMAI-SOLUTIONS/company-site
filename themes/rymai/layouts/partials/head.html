@@ -50,7 +50,7 @@
   {{ warnf "Style resource not found!" }}
 {{ end }}
 
-{{ with resources.Get "aos-2.3.4/dist/aos.css" }}
+{{ with resources.Get "js/aos-2.3.4/dist/aos.css" }}
   {{ $aosCSS := . | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $aosCSS.RelPermalink }}" integrity="{{ $aosCSS.Data.Integrity }}" crossorigin="anonymous">
 {{ end }}

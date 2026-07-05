@@ -15,38 +15,30 @@
     {{ partial "footer.html" . }}
   </footer>
 
-  {{ with resources.Get "aos-2.3.4/dist/aos.js" }}
-    {{ $aos := . | fingerprint }}
-    <script src="{{ $aos.RelPermalink }}" integrity="{{ $aos.Data.Integrity }}" crossorigin="anonymous"></script>
-  {{ end }}
-
-  {{ if .IsHome }}
-    {{ with resources.Get "js/vanta/vendor/three.r134.min.js" }}
-      {{ $three := . | fingerprint }}
-      <script src="{{ $three.RelPermalink }}" integrity="{{ $three.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{ end }}
-    {{ with resources.Get "js/vanta/dist/vanta.birds.min.js" }}
-      {{ $vantaBirds := . | fingerprint }}
-      <script src="{{ $vantaBirds.RelPermalink }}" integrity="{{ $vantaBirds.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{ end }}
-    {{ with resources.Get "js/intro-birds.js" }}
-      {{ $vantaMain := . | fingerprint }}
-      <script src="{{ $vantaMain.RelPermalink }}" integrity="{{ $vantaMain.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{ end }}
-  {{ end }}
-
   {{- with resources.Get "js/main.js" }}
     {{- if eq hugo.Environment "development" }}
-      {{- with . | js.Build }}
-        <script src="{{ .RelPermalink }}"></script>
-      {{- end }}
-    {{- else }}
-      {{- $opts := dict "minify" true }}
-      {{- with . | js.Build $opts | fingerprint }}
-        <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
-      {{- end }}
+        {{- with . | js.Build }}
+            <script src="{{ .RelPermalink }}"></script>
+        {{- end }}
+        {{- else }}
+            {{- $opts := dict "minify" true }}
+            {{- with . | js.Build $opts | fingerprint }}
+            <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+        {{- end }}
+    {{- end }}
+  {{- end }}
+
+  {{- with resources.Get "js/aos.js" }}
+    {{- if eq hugo.Environment "development" }}
+        {{- with . | js.Build }}
+            <script src="{{ .RelPermalink }}"></script>
+        {{- end }}
+        {{- else }}
+            {{- $opts := dict "minify" true }}
+            {{- with . | js.Build $opts | fingerprint }}
+            <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+        {{- end }}
     {{- end }}
   {{- end }}
 </body>
-
 </html>

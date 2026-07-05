@@ -15,8 +15,5 @@ if (mobileMenu) {
         let replaced = location.replace(/^\/[a-z]{2}\//, '/' + event.target.value + '/');
         window.location.replace(replaced);
     });
+    console.log('Mobile menu initialized with language:', currentLang);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    AOS.init();
-});
