@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+<!-- Hero -->
+{{ partial "hero.html" . }}
+
+<div class="main-content">
+    <!-- Intro -->
+    {{ partial "section-intro.html" . }}
+
+    <div class="spacer"></div>
+
+    <!-- Sections -->
+    {{ if eq .Language.Lang "en" }}
+    {{ partial "sections-en.html" . }}
+    {{ end }}
+    {{ if eq .Language.Lang "de" }}
+    {{ partial "sections-de.html" . }}
+    {{ end }}
+
+    <div class="spacer"></div>
+
+    <!-- Services -->
+    {{ partial "service-columns.html" . }}
+
+    <div class="spacer"></div>
+
+    <!-- Contact -->
+    {{ partial "section-contact.html" . }}
+</div>
+
+{{ if .IsHome }}
+    {{ with resources.Get "js/aos-2.3.4/dist/aos.js" }}
+        {{ $aos := . | fingerprint }}
+        <script src="{{ $aos.RelPermalink }}" integrity="{{ $aos.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
+
+    {{ with resources.Get "js/vanta/vendor/three.r134.min.js" }}
+        {{ $three := . | fingerprint }}
+        <script src="{{ $three.RelPermalink }}" integrity="{{ $three.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
+
+    {{ with resources.Get "js/vanta/dist/vanta.birds.min.js" }}
+        {{ $vantaBirds := . | fingerprint }}
+        <script src="{{ $vantaBirds.RelPermalink }}" integrity="{{ $vantaBirds.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end }}
+
+    {{ with resources.Get "js/intro-birds.js" }}
+        {{ $vantaMain := . | fingerprint }}
+        <script src="{{ $vantaMain.RelPermalink }}" integrity="{{ $vantaMain.Data.Integrity }}" crossorigin="anonymous"></script>
+        {{ end }}
+    {{ end }}
+{{ end }}
