@@ -1,22 +1,22 @@
-baseURL: 'https://rym-ai.solutions/'
-locale: 'en-US'
+baseURL: "https://rym-ai.solutions/"
+locale: "en-US"
 defaultContentLanguage: "en"
-theme: 'rymai'
+theme: "rymai"
 defaultContentLanguageInSubdir: true
 #frontmatter:
 #  enableShortcodes: true
 
 security:
   allowContent:
-    - '^text/html$'
-    - '^text/markdown$'
+    - "^text/html$"
+    - "^text/markdown$"
   enableInlineShortcodes: false
   exec:
     allow:
-      - '^(dart-)?sass(-embedded)?$'
-      - '^go$'
-      - '^git$'
-      - '^node$'
+      - "^(dart-)?sass(-embedded)?$"
+      - "^go$"
+      - "^git$"
+      - "^node$"
     osEnv:
       - '(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|PROGRAMDATA)$'
 
@@ -26,13 +26,13 @@ security:
 
 languages:
   en:
-      label: 'English'
-      title: 'RYM.AI Solutions | Modern AI solutions for your business'
-      weight: 1
+    label: "English"
+    title: "RYM.AI Solutions | Modern AI solutions for your business"
+    weight: 1
   de:
-      label: 'Deutsch'
-      title: 'RYM.AI Solutions | Moderne KI-Lösungen für Ihr Business'
-      weight: 2
+    label: "Deutsch"
+    title: "RYM.AI Solutions | Moderne KI-Lösungen für Ihr Business"
+    weight: 2
 
 params:
   contactMail: 'kontakt@rym-ai.solutions'
@@ -44,9 +44,9 @@ params:
 
 menus:
   main:
-    - name: 'Posts'
-      pageRef: '/posts'
+    - name: "Posts"
+      pageRef: "/posts"
       weight: 10
-    - name: 'Tags'
-      pageRef: '/tags'
+    - name: "Tags"
+      pageRef: "/tags"
       weight: 20
