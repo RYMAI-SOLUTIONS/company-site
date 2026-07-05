@@ -70,10 +70,14 @@ header {
 
     div {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: 100%;
         max-width: var(--max-content-width);
         margin: 0 auto;
+    }
+
+    ul {
+        list-style: none;
     }
 
     .menu {
@@ -162,6 +166,11 @@ footer {
             width: 100%;
         }
     }
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
 
 @import "contact";
