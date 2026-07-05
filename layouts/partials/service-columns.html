@@ -1,0 +1,22 @@
+{{ $currentLang := .Language.Lang }}
+{{ $langData := index .Site.Data $currentLang }}
+
+<section class="service-section content" data-aos="zoom-out-up" id="services">
+    <h2>{{ T "servicesHeadline" }}</h2>
+    <section class="services">
+        {{ with $localizedData := index $langData "service_columns" }}
+            {{ range $service := $localizedData.services }}
+            <div class="service-box">
+                <h2>{{ $service.title }}</h2>
+                <ul>
+                    {{ range $item := $service.items }}
+                    <li>{{ $item }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        {{ else }}
+            <p>No data found for file 'service_columns.json' in language folder: {{ $currentLang }}</p>
+        {{ end }}
+    </section>
+</section>
