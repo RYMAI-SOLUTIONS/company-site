@@ -2,15 +2,25 @@
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-  <nav>
-    <ul class="menu {{ $menuID }}">
-      <li>
-        <a href="#services" class="menu-link">
-          {{ T "menuItemServices" }}
+  <!-- <nav>
+    <ul class="menu {{ $menuID }}"> -->
+      <!-- <li>
+        <a href="/{{ site.Language.Lang }}/#what-we-do" class="menu-link">
+          {{ T "menuItemWhatWeDo" }}
         </a>
       </li>
-    </ul>
-  </nav>
+      <li>
+        <a href="/{{ site.Language.Lang }}/#contact" class="menu-link">
+          {{ T "menuItemContact" }}
+        </a>
+      </li> -->
+      <!-- <li>
+        <a href="/{{ site.Language.Lang }}/#services" class="menu-link">
+          {{ T "menuItemServices" }}
+        </a>
+      </li> -->
+    <!-- </ul>
+  </nav> -->
 {{- end }}
 
 <!--

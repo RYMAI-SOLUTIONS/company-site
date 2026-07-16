@@ -1,0 +1,32 @@
+{{- $mode := .Get "mode" | default "default" -}}
+
+{{- if eq $mode "imprint-owner" -}}
+<p>
+    {{ .Site.Params.companyName }}<br />
+    {{ if eq .Page.Lang "en" }}Proprietor{{ else }}Inhaber{{ end }}: {{ .Site.Params.contactName }}<br />
+    {{ .Site.Params.contactAddress1 }}<br />
+    {{ .Site.Params.contactAddress2 }}<br />
+    {{ if eq .Page.Lang "en" }}{{ .Site.Params.contactCountry }}{{ else }}Deutschland{{ end }}
+</p>
+{{- else if eq $mode "imprint-responsible" -}}
+<p>
+    {{ .Site.Params.contactName }}<br />
+    {{ .Site.Params.contactAddress1 }}<br />
+    {{ .Site.Params.contactAddress2 }}<br />
+    {{ if eq .Page.Lang "en" }}{{ .Site.Params.contactCountry }}{{ else }}Deutschland{{ end }}
+</p>
+{{- else -}}
+<p>
+    {{ .Site.Params.contactName }}<br />
+    {{ .Site.Params.companyName }}<br />
+    {{ .Site.Params.contactAddress1 }}<br />
+    {{ .Site.Params.contactAddress2 }}<br />
+    {{- if eq .Page.Lang "en" }}{{ .Site.Params.contactCountry }}{{ end }}
+</p>
+
+<h2>{{ if eq .Page.Lang "en" }}Contact{{ else }}Kontakt{{ end }}</h2>
+<p>
+    {{ if eq .Page.Lang "en" }}Phone{{ else }}Telefon{{ end }}: +49 151 294 39 334<br />
+    E-Mail: <a href="mailto:{{ .Site.Params.contactMail }}">{{ .Site.Params.contactMail }}</a>
+</p>
+{{- end -}}

@@ -2,7 +2,7 @@
 {{ $langData := index .Site.Data $currentLang }}
 
 <section class="service-section content" data-aos="zoom-out-up" id="services">
-    <h2>{{ T "servicesHeadline" }}</h2>
+    <!-- <h2>{{ T "servicesHeadline" }}</h2> -->
     <section class="services">
         {{ with $localizedData := index $langData "service_columns" }}
             {{ range $service := $localizedData.services }}
