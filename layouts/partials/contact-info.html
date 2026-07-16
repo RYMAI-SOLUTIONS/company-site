@@ -1,0 +1,13 @@
+<p>
+    {{ .Site.Params.contactName }}<br />
+    {{ .Site.Params.companyName }}<br />
+    {{ .Site.Params.streetAddress }}<br />
+    {{ .Site.Params.postalCode }} {{ .Site.Params.city }}<br />
+    {{- if eq .Lang "en" }}<br />Germany{{ end }}
+</p>
+
+<h2>{{ if eq .Lang "en" }}Contact{{ else }}Kontakt{{ end }}</h2>
+<p>
+    {{ if eq .Lang "en" }}Phone{{ else }}Telefon{{ end }}: +49 151 294 39 334<br />
+    E-Mail: <a href="mailto:{{ .Site.Params.contactMail }}">{{ .Site.Params.contactMail }}</a>
+</p>
