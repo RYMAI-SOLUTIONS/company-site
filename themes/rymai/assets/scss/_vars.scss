@@ -1,0 +1,12 @@
+:root {
+  color-scheme: light dark;
+
+  --primary: #00e;
+  --background: light-dark(#fff, #0D0D0D);
+  --text: light-dark(#000, #fff);
+  --font-family: 'Nunito', sans-serif;
+  --hero-gradient: linear-gradient(90deg, #1D499B 0%, #7F2874 50%, #995569 100%);
+  --text-gradient: linear-gradient(90deg, #274394 0%, #8F557E 50%, #C18464 100%);
+  --max-content-width: 1366px;
+  --border-radius: 0.5rem;
+}

@@ -1,0 +1,42 @@
+privacyPolicy:
+    other: "Datenschutzrichtlinie"
+
+imprint:
+    other: "Impressum"
+
+tagLine:
+    other: "Sichere KI-Infrastruktur, 100 % Kontrolle."
+taglineSubtitle:
+    other: "Maßgeschneiderte RAG-Systeme und lokale Sprachmodelle für optimierte Workflows."
+
+introTextFirst:
+    other: >
+        Bei RYM.AI verwandeln wir komplexe Sprachmodell-Technologie (LLMs) in einen kosteneffizienten, sofort
+        einsatzbereiten Motor für Ihr Alltagsgeschäft - ganz ohne Cloud-Abhängigkeit und steile Lernkurven.
+
+introTextSecond:
+    other: >
+        Als Experten für lokale und datenschutzkonforme KI-Anwendungen stehen wir fest an Ihrer Seite, um die perfekten
+        Lösungen für Ihre individuellen Geschäftsabläufe zu realisieren.
+
+contactHeadline:
+    other: "Kontaktieren Sie uns"
+
+contactText:
+    other: "Wenn Sie an unseren Dienstleistungen interessiert sind oder Fragen haben, zögern Sie bitte nicht, uns zu kontaktieren."
+
+contactButton:
+    other: "Kontaktieren Sie uns"
+
+servicesHeadline:
+    other: "Unser Angebot"
+
+#
+# Menu
+#
+menuItemServices:
+    other: "Unser Angebot"
+menuItemWhatWeDo:
+    other: "Was wir tun"
+menuItemContact:
+    other: "Kontakt"

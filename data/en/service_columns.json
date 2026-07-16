@@ -1,0 +1,30 @@
+{
+  "services": [
+    {
+      "title": "Local RAG & MCP Infrastructure",
+      "items": [
+        "RAG consultation and deployment of tailored solutions",
+        "MCP Server deployment and management for local LLMs and embeddings",
+        "Infrastructure optimization for local LLMs and embeddings. Competent guidance on local hardware selection, deployment, and maintenance."
+      ]
+    },
+    {
+      "title": "Agents, Embedding & Cloud Management",
+      "items": [
+        "Prompt and loop engineering for LLMs and embeddings.",
+        "Agentic workflow, skill, and tool implementation support for LLMs.",
+        "Model selection and deployment",
+        "Workflow and prompt optimization for local and cloud LLMs."
+      ]
+    },
+    {
+      "title": "Strategic Advisory & Workshops",
+      "items": [
+        "Teaching and implementation of agentic workflows, skills, and tools for LLMs.",
+        "Hands-on workshops and masterclasses for prompt engineering and loop optimization.",
+        "Competent guidance on local hardware selection, deployment, and maintenance.",
+        "Token and cost optimization strategies for LLMs and embeddings."
+      ]
+    }
+  ]
+}

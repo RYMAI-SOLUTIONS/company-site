@@ -1,0 +1,16 @@
+# Hugo build output and cache directories
+public/
+resources/_gen/
+temp/
+
+# Lock files
+.hugo_build.lock
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+

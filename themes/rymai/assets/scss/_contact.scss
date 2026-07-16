@@ -1,0 +1,26 @@
+.contact {
+    max-width: calc(var(--max-content-width) * 0.5);
+
+    a {
+        display: inline-block;
+        background: var(--text-gradient);
+        background-clip: unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: initial;
+        padding: .8rem 2rem;
+        border-radius: 0.5rem;
+        margin: 1rem;
+        font-size: 1.3rem;
+        transition: box-shadow 0.8s ease;
+
+        color: light-dark(#fff, #000);
+
+        &:hover {
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}

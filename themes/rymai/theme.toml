@@ -1,0 +1,16 @@
+name = 'RYM.AI'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'Simple company theme'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/owner/repo'
+
+# Taxonomy terms
+tags = ['company']
+features = ['some', 'awesome', 'features']
+
+# If the theme has a single author
+[author]
+  name = 'RYM.AI Solutions'
+  homepage = 'https://rym-ai.solutions'

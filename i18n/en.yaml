@@ -1,0 +1,42 @@
+privacyPolicy:
+    other: "Privacy Policy"
+
+imprint:
+    other: "Imprint"
+
+tagLine:
+    other: "Privacy-First AI Architecture, 100% Your Control."
+taglineSubtitle:
+    other: "Custom RAG systems and local language models engineered for smarter workflows."
+
+introTextFirst:
+    other: >
+        At RYM.AI, we turn complex LLM technology into a cost-effective, plug-and-play engine for your daily operations,
+        minus the cloud lock-in and steep learning curves.
+
+introTextSecond:
+    other: >
+        We engineer local, privacy-first AI applications, partnering with you to deliver tailored solutions that
+        seamlessly optimize your business workflows.
+
+contactHeadline:
+    other: "Contact us"
+
+contactText:
+    other: "If you are interested in our services or have any questions, please don't hesitate to contact us."
+
+contactButton:
+    other: "Contact us"
+
+servicesHeadline:
+    other: "Our Services"
+
+#
+# Menu
+#
+menuItemServices:
+    other: "Services"
+menuItemWhatWeDo:
+    other: "What we do"
+menuItemContact:
+    other: "Contact"

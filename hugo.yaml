@@ -1,0 +1,56 @@
+baseURL: "https://rym-ai.solutions/"
+locale: "en-US"
+defaultContentLanguage: "en"
+theme: "rymai"
+defaultContentLanguageInSubdir: true
+#frontmatter:
+#  enableShortcodes: true
+
+security:
+  allowContent:
+    - "^text/html$"
+    - "^text/markdown$"
+  enableInlineShortcodes: false
+  exec:
+    allow:
+      - "^(dart-)?sass(-embedded)?$"
+      - "^go$"
+      - "^git$"
+      - "^node$"
+    osEnv:
+      - '(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|PROGRAMDATA)$'
+
+#
+# Languages
+#
+
+languages:
+  en:
+    label: "English"
+    title: "RYM.AI Solutions | Modern AI solutions for your business"
+    weight: 1
+  de:
+    label: "Deutsch"
+    title: "RYM.AI Solutions | Moderne KI-Lösungen für Ihr Business"
+    weight: 2
+
+params:
+  contactMail: "kontakt@rym-ai.solutions"
+  contactName: "Martin Albrecht"
+  companyName: "RYM.AI Solutions"
+  companyNameShort: "RYM.AI"
+  contactAddress1: "c/o Impressumservice Dein-Impressum, Stettiner Str. 41"
+  contactAddress2: "35410 Hungen"
+  contactCountry: "Germany"
+#
+# Menu
+#
+
+menus:
+  main:
+    - name: "Posts"
+      pageRef: "/posts"
+      weight: 10
+    - name: "Tags"
+      pageRef: "/tags"
+      weight: 20
