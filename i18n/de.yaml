@@ -36,3 +36,7 @@ servicesHeadline:
 #
 menuItemServices:
     other: "Unser Angebot"
+menuItemWhatWeDo:
+    other: "Was wir tun"
+menuItemContact:
+    other: "Kontakt"
