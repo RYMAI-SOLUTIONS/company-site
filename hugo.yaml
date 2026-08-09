@@ -29,10 +29,16 @@ languages:
     label: "English"
     title: "RYM.AI Solutions | Modern AI solutions for your business"
     weight: 1
+    params:
+      description: "RYM.AI Solutions builds privacy-first AI systems, local language models, and custom RAG workflows for businesses that need secure and reliable automation."
+      keywords: "AI solutions, local AI, privacy-first AI, RAG systems, English AI consulting"
   de:
     label: "Deutsch"
     title: "RYM.AI Solutions | Moderne KI-Lösungen für Ihr Business"
     weight: 2
+    params:
+      description: "RYM.AI Solutions entwickelt datenschutzfreundliche KI-Systeme, lokale Sprachmodelle und individuelle RAG-Workflows für Unternehmen mit hohen Anforderungen an Sicherheit und Zuverlässigkeit."
+      keywords: "KI-Lösungen, lokale KI, datenschutzfreundliche KI, RAG-Systeme, deutschsprachige KI-Beratung"
 
 params:
   contactMail: "kontakt@rym-ai.solutions"
@@ -42,6 +48,15 @@ params:
   contactAddress1: "c/o Impressumservice Dein-Impressum, Stettiner Str. 41"
   contactAddress2: "35410 Hungen"
   contactCountry: "Germany"
+  description: "RYM.AI Solutions builds privacy-first AI systems, local language models, and custom RAG workflows for businesses that need secure and reliable automation."
+  keywords: "AI solutions, local AI, privacy-first AI, RAG systems, German AI consulting"
+  social:
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/company/rym-ai-solutions/"
+      icon: "linkedin"
+    - name: "BlueSky"
+      url: "https://bsky.app/profile/rymai.bsky.social"
+      icon: "bluesky"
 #
 # Menu
 #

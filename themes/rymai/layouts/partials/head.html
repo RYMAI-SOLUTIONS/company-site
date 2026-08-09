@@ -5,7 +5,8 @@
 
 {{- $title       := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) -}}
 {{- $description := or .Params.description .Summary -}}
-{{- $ogImage     := cond (isset .Params "ogimage") (.Params.ogImage | absURL) ("images/og-default.jpg" | absURL) -}}
+{{- $ogImagePath := or .Params.ogImage .Params.image .Params.images site.Params.ogImage "/images/Logo-300w.png" -}}
+{{- $ogImage := cond (or (hasPrefix $ogImagePath "http://") (hasPrefix $ogImagePath "https://")) $ogImagePath ($ogImagePath | absURL) -}}
 {{- $ogLocale    := cond (eq .Language.Lang "de") "de_DE" "en_US" -}}
 
 <!-- Primary -->
@@ -28,6 +29,7 @@
 <meta property="og:type" content="{{ if or .IsHome .IsSection }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:alt" content="{{ with .Params.ogImageAlt }}{{ . }}{{ else }}{{ $title }}{{ end }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:locale" content="{{ $ogLocale }}">
@@ -35,12 +37,13 @@
 <meta property="og:locale:alternate" content="{{ cond (eq .Language.Lang "de") "de_DE" "en_US" }}">
 {{ end -}}
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ $title }}">
-<meta name="twitter:description" content="{{ $description }}">
-<meta name="twitter:image" content="{{ $ogImage }}">
-<meta name="twitter:image:alt" content="{{ with .Params.ogImageAlt }}{{ . }}{{ else }}{{ $title }}{{ end }}">
+<!-- Social profiles -->
+{{ with site.Params.social }}
+  {{ range . }}
+    {{ if eq .icon "linkedin" }}<link rel="me" href="{{ .url }}">{{ end }}
+    {{ if eq .icon "bluesky" }}<link rel="me" href="{{ .url }}">{{ end }}
+  {{ end }}
+{{ end }}
 
 <!-- Styles -->
 {{ with resources.Get "scss/main.scss" }}
