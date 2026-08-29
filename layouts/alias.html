@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Permalink }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+  {{/* SEO for social crawlers on the root alias (https://rym-ai.solutions/) – provide full OG/Twitter so unfurl works */}}
+  {{- $title := site.Title -}}
+  {{- $description := site.Params.description | plainify | truncate 160 -}}
+  {{- $ogImage := (site.Params.ogImage | default "/images/og-image.png") | absURL -}}
+  <meta name="description" content="{{ $description }}">
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.BaseURL }}">
+  <meta property="og:image" content="{{ $ogImage }}">
+  <meta property="og:image:secure_url" content="{{ $ogImage }}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ $title }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:site_name" content="{{ $title }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $title }}">
+  <meta name="twitter:description" content="{{ $description }}">
+  <meta name="twitter:image" content="{{ $ogImage }}">
+  <meta name="twitter:image:alt" content="{{ $title }}">
+  <link rel="alternate" hreflang="en" href="{{ site.BaseURL }}en/">
+  <link rel="alternate" hreflang="de" href="{{ site.BaseURL }}de/">
+  <link rel="alternate" hreflang="x-default" href="{{ site.BaseURL }}en/">
+  {{- $socialURLs := slice -}}
+  {{- range site.Params.social }}{{ $socialURLs = $socialURLs | append .url }}{{ end -}}
+  {{- $orgLD := dict "@context" "https://schema.org" "@type" "Organization" "name" site.Params.companyName "url" site.BaseURL "logo" ("/images/Logo-300w.png" | absURL) "image" $ogImage "description" $description "email" site.Params.contactMail "sameAs" $socialURLs -}}
+  <script type="application/ld+json">{{ $orgLD | jsonify | safeJS }}</script>
+</head>
+<body>
+  <p><a href="{{ .Permalink }}">{{ .Permalink }}</a></p>
+  <script>window.location.href="{{ .Permalink }}";</script>
+</body>
+</html>

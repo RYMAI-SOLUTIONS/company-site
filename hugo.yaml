@@ -50,6 +50,7 @@ params:
   contactCountry: "Germany"
   description: "RYM.AI Solutions builds privacy-first AI systems, local language models, and custom RAG workflows for businesses that need secure and reliable automation."
   keywords: "AI solutions, local AI, privacy-first AI, RAG systems, German AI consulting"
+  ogImage: "/images/og-image.png"
   social:
     - name: "LinkedIn"
       url: "https://www.linkedin.com/company/rym-ai-solutions/"
