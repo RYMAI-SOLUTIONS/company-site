@@ -4,15 +4,24 @@
 <meta name="color-scheme" content="light dark">
 
 {{- $title       := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) -}}
-{{- $description := or .Params.description .Summary -}}
-{{- $ogImagePath := or .Params.ogImage .Params.image .Params.images site.Params.ogImage "/images/Logo-300w.png" -}}
+{{- /* Robust description fallback: page -> summary -> language description -> site description */ -}}
+{{- $description := "" -}}
+{{- if .Params.description }}{{ $description = .Params.description }}{{ else if .Summary }}{{ $description = .Summary }}{{ else if site.Params.description }}{{ $description = site.Params.description }}{{ end -}}
+{{- $description = $description | plainify | htmlUnescape | truncate 160 -}}
+{{- $ogImagePath := or .Params.ogImage .Params.image site.Params.ogImage "/images/og-image.png" -}}
+{{- /* Support .Params.images as slice: take first */ -}}
+{{- if and (not $ogImagePath) .Params.images }}{{ $ogImagePath = index .Params.images 0 }}{{ end -}}
+{{- if not $ogImagePath }}{{ $ogImagePath = "/images/og-image.png" }}{{ end -}}
 {{- $ogImage := cond (or (hasPrefix $ogImagePath "http://") (hasPrefix $ogImagePath "https://")) $ogImagePath ($ogImagePath | absURL) -}}
 {{- $ogLocale    := cond (eq .Language.Lang "de") "de_DE" "en_US" -}}
+{{- $ogImageAlt  := or .Params.ogImageAlt $title -}}
 
 <!-- Primary -->
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
+{{- with .Params.keywords }}<meta name="keywords" content="{{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}">{{ else }}{{ with site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}{{ end }}
 <meta name="robots" content="{{ if .Params.noindex }}noindex, nofollow{{ else }}index, follow{{ end }}">
+<meta name="author" content="{{ site.Params.companyName | default site.Title }}">
 <link rel="canonical" href="{{ .Permalink }}">
 
 <!-- Favicons -->
@@ -23,19 +32,37 @@
 {{ range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
 {{ end -}}
+<link rel="alternate" hreflang="x-default" href="{{ site.Home.Permalink }}">
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:type" content="{{ if or .IsHome .IsSection }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ $ogImage }}">
-<meta property="og:image:alt" content="{{ with .Params.ogImageAlt }}{{ . }}{{ else }}{{ $title }}{{ end }}">
+<meta property="og:image:secure_url" content="{{ $ogImage }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ $ogImageAlt }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:locale" content="{{ $ogLocale }}">
 {{ range .Translations -}}
 <meta property="og:locale:alternate" content="{{ cond (eq .Language.Lang "de") "de_DE" "en_US" }}">
 {{ end -}}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+<meta name="twitter:image:alt" content="{{ $ogImageAlt }}">
+
+{{- $socialURLs := slice -}}
+{{- range site.Params.social }}{{ $socialURLs = $socialURLs | append .url }}{{ end -}}
+{{- $orgLD := dict "@context" "https://schema.org" "@type" "Organization" "name" site.Params.companyName "url" site.BaseURL "logo" ("/images/Logo-300w.png" | absURL) "image" $ogImage "description" $description "email" site.Params.contactMail "sameAs" $socialURLs -}}
+<!-- JSON-LD Organization -->
+<script type="application/ld+json">{{ $orgLD | jsonify | safeJS }}</script>
 
 <!-- Social profiles -->
 {{ with site.Params.social }}
