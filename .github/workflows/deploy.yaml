@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  # Adds the manual trigger button in the GitHub Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -47,4 +49,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4.0.5
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b30c03e  # v4.0.5
