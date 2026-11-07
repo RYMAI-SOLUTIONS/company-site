@@ -30,14 +30,14 @@ languages:
     title: "RYM.AI Solutions | Modern AI solutions for your business"
     weight: 1
     params:
-      description: "RYM.AI Solutions builds privacy-first AI systems, local language models, and custom RAG workflows for businesses that need secure and reliable automation."
+      description: "RYM.AI Solutions engineers privacy-first local AI: custom RAG systems and on-premise LLMs that automate workflows with no cloud lock-in and no data leakage."
       keywords: "AI solutions, local AI, privacy-first AI, RAG systems, English AI consulting"
   de:
     label: "Deutsch"
     title: "RYM.AI Solutions | Moderne KI-Lösungen für Ihr Business"
     weight: 2
     params:
-      description: "RYM.AI Solutions entwickelt datenschutzfreundliche KI-Systeme, lokale Sprachmodelle und individuelle RAG-Workflows für Unternehmen mit hohen Anforderungen an Sicherheit und Zuverlässigkeit."
+      description: "RYM.AI Solutions entwickelt datenschutzfreundliche lokale KI: maßgeschneiderte RAG-Systeme und On-Premise-LLMs, die Workflows automatisieren – ohne Cloud."
       keywords: "KI-Lösungen, lokale KI, datenschutzfreundliche KI, RAG-Systeme, deutschsprachige KI-Beratung"
 
 params:
@@ -48,7 +48,7 @@ params:
   contactAddress1: "c/o Impressumservice Dein-Impressum, Stettiner Str. 41"
   contactAddress2: "35410 Hungen"
   contactCountry: "Germany"
-  description: "RYM.AI Solutions builds privacy-first AI systems, local language models, and custom RAG workflows for businesses that need secure and reliable automation."
+  description: "RYM.AI Solutions engineers privacy-first local AI: custom RAG systems and on-premise LLMs that automate workflows with no cloud lock-in and no data leakage."
   keywords: "AI solutions, local AI, privacy-first AI, RAG systems, German AI consulting"
   ogImage: "/images/og-image.png"
   social:
