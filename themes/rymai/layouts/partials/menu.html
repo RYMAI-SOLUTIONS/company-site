@@ -1,58 +1,31 @@
-{{- $page := .page }}
-{{- $menuID := .menuID }}
-
-{{- with index site.Menus $menuID }}
-  <!-- <nav>
-    <ul class="menu {{ $menuID }}"> -->
-      <!-- <li>
-        <a href="/{{ site.Language.Lang }}/#what-we-do" class="menu-link">
-          {{ T "menuItemWhatWeDo" }}
-        </a>
-      </li>
+{{- $page := .page -}}
+{{- $menuID := .menuID -}}
+{{- $hasNews := gt (len (where site.RegularPages "Section" "news")) 0 -}}
+{{- $hasTags := gt (len site.Taxonomies.tags) 0 -}}
+{{- $visibleItems := slice -}}
+{{- range index site.Menus $menuID -}}
+  {{- if and (eq .Identifier "menuNews") (not $hasNews) -}}
+  {{- else if and (eq .Identifier "menuTags") (not $hasTags) -}}
+  {{- else -}}
+    {{- $visibleItems = $visibleItems | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with $visibleItems }}
+<nav class="main-nav" aria-label="{{ T "mainNavigation" }}">
+  <ul class="menu {{ $menuID }}">
+    {{- range . }}
+      {{- $url := .URL -}}
+      {{- with .Page }}{{ $url = .RelPermalink }}{{ end -}}
+      {{- $name := .Name -}}
+      {{- if eq .Identifier "menuNews" }}{{ $name = T "menuNews" }}{{ else if eq .Identifier "menuTags" }}{{ $name = T "menuTags" }}{{ end -}}
+      {{- $active := or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) -}}
+      {{- if and (not $active) $page.Parent (eq $page.Parent.RelPermalink $url) -}}
+        {{- $active = true -}}
+      {{- end -}}
       <li>
-        <a href="/{{ site.Language.Lang }}/#contact" class="menu-link">
-          {{ T "menuItemContact" }}
-        </a>
-      </li> -->
-      <!-- <li>
-        <a href="/{{ site.Language.Lang }}/#services" class="menu-link">
-          {{ T "menuItemServices" }}
-        </a>
-      </li> -->
-    <!-- </ul>
-  </nav> -->
-{{- end }}
-
-<!--
-{{- define "partials/inline/menu/walk.html" }}
-  {{- $page := .page }}
-  {{- range .menuEntries }}
-    {{- $attrs := dict "href" .URL }}
-    {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-    {{- else if $page.HasMenuCurrent .Menu .}}
-      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+        <a href="{{ $url }}" class="menu-link{{ if $active }} active{{ end }}"{{ if $active }} aria-current="page"{{ end }}>{{ $name }}</a>
+      </li>
     {{- end }}
-    {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
-    {{- end }}
-    <li>
-      <a
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-      >{{ $name }}</a>
-      {{- with .Children }}
-        <ul>
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-        </ul>
-      {{- end }}
-    </li>
-  {{- end }}
+  </ul>
+</nav>
 {{- end }}
--->

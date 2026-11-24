@@ -1,0 +1,81 @@
+{{ define "main" }}
+{{- $cover := partial "news/cover.html" (dict "page" .) -}}
+{{- $author := .Params.author | default site.Params.companyName -}}
+<article class="news-article">
+  <header class="news-article-header">
+    <nav class="news-breadcrumb" aria-label="{{ T "newsBreadcrumb" }}">
+      <a href="{{ .Parent.RelPermalink }}">{{ T "newsBackToNews" }}</a>
+    </nav>
+
+    <div class="news-article-kicker">
+      {{- with .GetTerms "categories" -}}
+        {{- range first 1 . }}
+          <a class="news-category" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{- end -}}
+      {{- end }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+      <span>{{ .ReadingTime }} {{ T "newsMinRead" }}</span>
+    </div>
+
+    <h1 class="news-article-title">{{ .Title }}</h1>
+
+    {{- with .Params.description }}
+      <p class="news-article-deck">{{ . }}</p>
+    {{- end }}
+
+    <div class="news-article-byline">
+      <span class="news-article-author">{{ T "newsBy" }} {{ $author }}</span>
+      <div class="news-share">
+        <span class="news-share-label">{{ T "newsShare" }}</span>
+        <a class="news-share-link" href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="news-share-link" href="https://bsky.app/intent/compose?text={{ printf "%s %s" .Title .Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
+        <a class="news-share-link" href="https://twitter.com/intent/tweet?text={{ .Title | urlquery }}&amp;url={{ .Permalink | urlquery }}" target="_blank" rel="noopener noreferrer">X</a>
+        <button class="news-share-link news-copy-link" type="button" data-copy-link="{{ .Permalink }}" data-copied-label="{{ T "newsCopied" }}" data-copy-prompt="{{ T "newsCopyPrompt" }}">{{ T "newsCopyLink" }}</button>
+      </div>
+    </div>
+  </header>
+
+  {{- with $cover }}
+    <figure class="news-article-hero">
+      <img src="{{ . }}" alt="{{ $.Params.imageAlt | default $.Title }}" loading="eager" decoding="async">
+      {{- with $.Params.imageCaption }}
+        <figcaption>{{ . }}</figcaption>
+      {{- end }}
+    </figure>
+  {{- end }}
+
+  <div class="news-article-body">
+    {{ .Content }}
+  </div>
+
+  {{- with .GetTerms "tags" }}
+    <div class="news-article-footer">
+      <div class="news-tags">
+        <span class="news-tags-label">{{ T "newsTags" }}</span>
+        {{- range . }}
+          <a class="news-tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{- end }}
+      </div>
+    </div>
+  {{- end }}
+</article>
+
+{{- $related := where site.RegularPages "Section" "news" -}}
+{{- $related = where $related "Permalink" "ne" .Permalink -}}
+{{- $related = $related.ByDate.Reverse | first 3 -}}
+{{- with $related }}
+  <section class="news-related">
+    <div class="news-related-inner">
+      <div class="news-related-header">
+        <h2>{{ T "newsKeepReading" }}</h2>
+        <a class="news-related-all" href="{{ $.Parent.RelPermalink }}">{{ T "newsAllNews" }} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="news-grid">
+        {{- range . }}
+          {{ partial "news/card.html" (dict "page" . "level" "h3") }}
+        {{- end }}
+      </div>
+    </div>
+  </section>
+{{- end }}
+{{ end }}

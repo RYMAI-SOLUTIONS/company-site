@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{- $pages := .Pages.ByDate.Reverse -}}
+{{- $paginator := .Paginate $pages -}}
+<section class="news-index">
+  <header class="news-index-header content">
+    <p class="eyebrow">{{ T "newsEyebrow" }}</p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Content }}
+      <div class="news-index-intro">{{ . }}</div>
+    {{- end }}
+  </header>
+
+  {{- if $paginator.Pages }}
+    {{- if eq $paginator.PageNumber 1 }}
+      {{- $featured := index $paginator.Pages 0 }}
+      {{ partial "news/card.html" (dict "page" $featured "featured" true "level" "h2") }}
+      {{- $rest := after 1 $paginator.Pages }}
+      {{- with $rest }}
+        <div class="news-grid content">
+          {{- range . }}
+            {{ partial "news/card.html" (dict "page" . "level" "h2") }}
+          {{- end }}
+        </div>
+      {{- end }}
+    {{- else }}
+      <div class="news-grid content">
+        {{- range $paginator.Pages }}
+          {{ partial "news/card.html" (dict "page" . "level" "h2") }}
+        {{- end }}
+      </div>
+    {{- end }}
+
+    {{ partial "news/pagination.html" $paginator }}
+  {{- else }}
+    <p class="news-empty content">{{ T "newsNoArticles" }}</p>
+  {{- end }}
+</section>
+{{ end }}

@@ -14,3 +14,8 @@ Thumbs.db
 *.log
 *.tmp
 
+# Example news articles (keep out of git to avoid accidental publishing)
+content/news/privacy-first-ai-on-your-own-hardware/
+content/news/rag-without-the-cloud/
+
+

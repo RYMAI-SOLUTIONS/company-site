@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{- $paginator := .Paginate .Pages.ByDate.Reverse -}}
+<section class="news-index">
+  <header class="news-index-header content">
+    <p class="eyebrow">{{ with .Parent }}{{ .Title }}{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Content }}
+      <div class="news-index-intro">{{ . }}</div>
+    {{- end }}
+  </header>
+
+  {{- if $paginator.Pages }}
+    <div class="news-grid content">
+      {{- range $paginator.Pages }}
+        {{ partial "news/card.html" (dict "page" . "level" "h2") }}
+      {{- end }}
+    </div>
+    {{ partial "news/pagination.html" $paginator }}
+  {{- else }}
+    <p class="news-empty content">{{ T "newsNoArticles" }}</p>
+  {{- end }}
+</section>
+{{ end }}

@@ -1,0 +1,23 @@
+{{- $pages := where site.RegularPages "Section" "news" -}}
+{{- $pages = $pages.ByDate.Reverse | first 3 -}}
+{{- $newsPage := site.GetPage "/news" -}}
+{{- with $pages }}
+<section class="news-teaser">
+  <div class="news-teaser-inner">
+    <div class="news-teaser-header">
+      <div>
+        <p class="eyebrow">{{ T "newsEyebrow" }}</p>
+        <h2>{{ T "newsLatest" }}</h2>
+      </div>
+      {{- with $newsPage }}
+        <a class="news-teaser-all" href="{{ .RelPermalink }}">{{ T "newsAllNews" }} <span aria-hidden="true">&rarr;</span></a>
+      {{- end }}
+    </div>
+    <div class="news-grid">
+      {{- range . }}
+        {{ partial "news/card.html" (dict "page" . "level" "h3") }}
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}

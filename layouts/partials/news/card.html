@@ -1,0 +1,41 @@
+{{- $p := .page -}}
+{{- $featured := .featured | default false -}}
+{{- $level := .level | default "h2" -}}
+{{- $cover := partial "news/cover.html" (dict "page" $p) -}}
+{{- $description := $p.Params.description | default ($p.Summary | plainify | truncate 180) -}}
+<article class="news-card{{ if $featured }} news-card--featured{{ end }}">
+  <div class="news-card-media{{ if not $cover }} is-placeholder{{ end }}">
+    {{- with $cover -}}
+      <img src="{{ . }}" alt="{{ $p.Params.imageAlt | default "" }}" loading="lazy" decoding="async">
+    {{- else -}}
+      <span class="news-card-placeholder-mark" aria-hidden="true">RYM.AI</span>
+    {{- end -}}
+    <a class="news-card-media-link" href="{{ $p.RelPermalink }}" tabindex="-1" aria-hidden="true"></a>
+  </div>
+  <div class="news-card-body">
+    <div class="news-card-meta">
+      {{- with $p.GetTerms "categories" -}}
+        {{- with index . 0 -}}
+          <a class="news-card-category" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{- end -}}
+      {{- end -}}
+      <time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date | time.Format ":date_long" }}</time>
+      <span class="news-card-reading">{{ $p.ReadingTime }} {{ T "newsMinRead" }}</span>
+    </div>
+    {{- if eq $level "h3" }}
+    <h3 class="news-card-title">
+      <a href="{{ $p.RelPermalink }}">{{ $p.LinkTitle }}</a>
+    </h3>
+    {{- else }}
+    <h2 class="news-card-title">
+      <a href="{{ $p.RelPermalink }}">{{ $p.LinkTitle }}</a>
+    </h2>
+    {{- end }}
+    {{- with $description }}
+      <p class="news-card-description">{{ . }}</p>
+    {{- end }}
+    <a class="news-card-link" href="{{ $p.RelPermalink }}">
+      {{ T "newsReadArticle" }} <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</article>

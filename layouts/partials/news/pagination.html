@@ -1,0 +1,17 @@
+{{- with . -}}
+  {{- if gt .TotalPages 1 -}}
+  <nav class="news-pagination" aria-label="{{ T "newsPagination" }}">
+    {{- with .Prev }}
+      <a class="news-pagination-link" href="{{ .URL }}" rel="prev">&larr; {{ T "newsPrevious" }}</a>
+    {{- else }}
+      <span class="news-pagination-spacer" aria-hidden="true"></span>
+    {{- end }}
+    <span class="news-pagination-status">{{ T "newsPage" }} {{ .PageNumber }} / {{ .TotalPages }}</span>
+    {{- with .Next }}
+      <a class="news-pagination-link" href="{{ .URL }}" rel="next">{{ T "newsNext" }} &rarr;</a>
+    {{- else }}
+      <span class="news-pagination-spacer" aria-hidden="true"></span>
+    {{- end }}
+  </nav>
+  {{- end -}}
+{{- end -}}

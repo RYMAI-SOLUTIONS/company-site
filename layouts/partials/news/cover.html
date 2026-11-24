@@ -1,0 +1,22 @@
+{{- /* Resolve a cover image from a page bundle, the assets folder, static, or an absolute URL. */ -}}
+{{- $page := .page -}}
+{{- $image := .image | default $page.Params.image -}}
+{{- $url := "" -}}
+{{- with $image -}}
+  {{- if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "//") -}}
+    {{- $url = . -}}
+  {{- else if hasPrefix . "/" -}}
+    {{- $url = . | relURL -}}
+  {{- else -}}
+    {{- with $page.Resources.GetMatch . -}}
+      {{- $url = .RelPermalink -}}
+    {{- else -}}
+      {{- with resources.Get . -}}
+        {{- $url = .RelPermalink -}}
+      {{- else -}}
+        {{- $url = . | relURL -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

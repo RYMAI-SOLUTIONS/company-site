@@ -24,6 +24,14 @@
     <!-- Services -->
     {{ partial "service-columns.html" . }}
 
+    {{ $news := where site.RegularPages "Section" "news" }}
+    {{ if $news }}
+    <div class="spacer"></div>
+
+    <!-- Latest news -->
+    {{ partial "news-teaser.html" . }}
+    {{ end }}
+
     <div class="spacer"></div>
 
     <!-- Contact -->

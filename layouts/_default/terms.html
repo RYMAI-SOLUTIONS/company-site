@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="news-index">
+  <header class="news-index-header content">
+    <p class="eyebrow">{{ .Title }}</p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Content }}
+      <div class="news-index-intro">{{ . }}</div>
+    {{- end }}
+  </header>
+
+  <div class="tag-cloud content">
+    {{- range .Pages.ByTitle }}
+      <a class="tag-pill" href="{{ .RelPermalink }}">
+        {{ .LinkTitle }} <span class="tag-count">{{ len .Pages }}</span>
+      </a>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

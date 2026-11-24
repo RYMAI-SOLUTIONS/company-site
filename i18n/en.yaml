@@ -32,6 +32,56 @@ servicesHeadline:
     other: "Our Services"
 
 #
+# News
+#
+newsEyebrow:
+    other: "News"
+newsLatest:
+    other: "Latest news"
+newsAllNews:
+    other: "View all news"
+newsReadArticle:
+    other: "Read article"
+newsMinRead:
+    other: "min read"
+newsBy:
+    other: "By"
+newsShare:
+    other: "Share"
+newsCopyLink:
+    other: "Copy link"
+newsCopied:
+    other: "Link copied"
+newsCopyPrompt:
+    other: "Copy this link:"
+newsKeepReading:
+    other: "Keep reading"
+newsBackToNews:
+    other: "All news"
+newsNoArticles:
+    other: "No articles yet. Check back soon."
+newsTags:
+    other: "Tags"
+newsPrevious:
+    other: "Newer"
+newsNext:
+    other: "Older"
+newsPage:
+    other: "Page"
+newsPagination:
+    other: "Pagination"
+newsBreadcrumb:
+    other: "Breadcrumb"
+mainNavigation:
+    other: "Main navigation"
+languageNavigation:
+    other: "Language"
+menuNews:
+    other: "News"
+menuTags:
+    other: "Tags"
+
+#
 # Menu
 #
 menuItemServices:

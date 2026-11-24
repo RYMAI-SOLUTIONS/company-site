@@ -1,19 +1,36 @@
-const pathSegments = window.location.pathname.split('/').filter(Boolean);
-
-let currentLang = 'en';
-if (pathSegments.length > 0 && /^[a-z]{2}$/.test(pathSegments[0])) {
-    currentLang = pathSegments[0];
-}
-
 const mobileMenu = document.querySelector('.mobile-menu');
 if (mobileMenu) {
-    mobileMenu.value = currentLang;
-
     mobileMenu.addEventListener('change', (event) => {
-        event.preventDefault();
-        let location = window.location.pathname;
-        let replaced = location.replace(/^\/[a-z]{2}\//, '/' + event.target.value + '/');
-        window.location.replace(replaced);
+        const url = event.target.value;
+        if (url) {
+            window.location.replace(url);
+        }
     });
-    console.log('Mobile menu initialized with language:', currentLang);
 }
+
+const copyButtons = document.querySelectorAll('[data-copy-link]');
+copyButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+        const link = button.getAttribute('data-copy-link');
+        const original = button.textContent;
+        const promptLabel = button.getAttribute('data-copy-prompt') || 'Copy this link:';
+
+        const showCopied = () => {
+            button.textContent = button.getAttribute('data-copied-label') || 'Copied';
+            window.setTimeout(() => {
+                button.textContent = original;
+            }, 2000);
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(link);
+                showCopied();
+            } catch (error) {
+                window.prompt(promptLabel, link);
+            }
+        } else {
+            window.prompt(promptLabel, link);
+        }
+    });
+});

@@ -20,6 +20,10 @@ security:
     osEnv:
       - '(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|PROGRAMDATA)$'
 
+markup:
+  highlight:
+    noClasses: false
+
 #
 # Languages
 #
@@ -64,9 +68,11 @@ params:
 
 menus:
   main:
-    - name: "Posts"
-      pageRef: "/posts"
+    - identifier: "menuNews"
+      name: "News"
+      pageRef: "/news"
       weight: 10
-    - name: "Tags"
+    - identifier: "menuTags"
+      name: "Tags"
       pageRef: "/tags"
       weight: 20

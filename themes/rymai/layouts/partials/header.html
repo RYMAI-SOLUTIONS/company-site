@@ -1,24 +1,26 @@
-<div>
+{{- $currentLang := .Language.Lang -}}
+{{- $translations := .AllTranslations -}}
+<div class="header-inner">
     <div>
-        <a href="{{ "/" | relLangURL }}/">
-            <img src="{{ "images/Logo-300w.png" | relURL }}" alt="Logo" class="logo" width="100">
+        <a class="logo-link" href="{{ "/" | relLangURL }}" aria-label="{{ site.Params.companyName }}">
+            <img src="{{ "images/Logo-300w.png" | relURL }}" alt="{{ site.Params.companyName }}" class="logo"
+                width="160">
         </a>
 
         {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
     </div>
 
-    <nav>
-        <ul>
-            <li>
-                <select class="mobile-menu" id="language-picker" aria-label="Select language">
-                    <option value="en">
-                        🇺🇸 EN
-                    </option>
-                    <option value="de">
-                        🇩🇪 DE
-                    </option>
-                </select>
-            </li>
-        </ul>
+    <nav class="language-nav" aria-label="{{ T " languageNavigation" }}">
+        <select class="mobile-menu" id="language-picker" aria-label="{{ T " languageNavigation" }}">
+            {{- range hugo.Sites }}
+            {{- $lang := .Language.Lang -}}
+            {{- $url := .Home.RelPermalink -}}
+            {{- range $translations -}}
+            {{- if eq .Language.Lang $lang }}{{ $url = .RelPermalink }}{{ end -}}
+            {{- end -}}
+            <option value="{{ $url }}" {{ if eq $lang $currentLang }} selected{{ end }}>{{ if eq $lang "de" }}🇩🇪{{
+                else }}🇺🇸{{ end }} {{ upper $lang }}</option>
+            {{- end }}
+        </select>
     </nav>
 </div>
