@@ -1,0 +1,82 @@
+{
+  "eyebrow": "Services",
+  "headline": "Local AI engineered for control, speed, and measurable ROI",
+  "intro": "We help mid-sized companies and technical teams design, deploy, and master privacy-first AI systems. From local RAG and MCP infrastructure to agentic workflows and hands-on workshops.",
+  "pillars": [
+    {
+      "number": "01",
+      "icon": "rag",
+      "tag": "Infrastructure & Retrieval",
+      "title": "Local RAG & MCP Infrastructure",
+      "lead": "Turn internal documents, databases, and tools into an auditable intelligence layer that never leaves your network.",
+      "description": "We architect end-to-end Retrieval-Augmented Generation (RAG) pipelines and Model Context Protocol (MCP) servers tailored to your data sources and hardware budget. Every query, embedding, and model call stays on infrastructure you control.",
+      "deliverables": [
+        "Custom RAG architecture, document parsing, chunking, and hybrid retrieval",
+        "MCP server design and deployment connecting local LLMs to internal APIs and files",
+        "Hardware sizing, quantization, and inference tuning for workstations or on-prem servers",
+        "Zero-cloud-leakage security posture with reproducible model versions"
+      ],
+      "outcomeLabel": "Best for",
+      "outcome": "Regulated teams, confidential knowledge bases, and predictable high-volume workloads."
+    },
+    {
+      "number": "02",
+      "icon": "agents",
+      "tag": "Workflows & Engineering",
+      "title": "Agents, Embeddings & Model Operations",
+      "lead": "Move beyond brittle single-shot prompts to reliable, tool-using workflows that ship into daily operations.",
+      "description": "We engineer structured prompt loops, custom agent skills, and embedding pipelines across open-source and hybrid models by optimizing accuracy, latency, and token economics without vendor lock-in.",
+      "deliverables": [
+        "Prompt and loop engineering with deterministic validation and evaluation",
+        "Agentic workflow, skill, and tool implementation for real business processes",
+        "Model benchmarking, selection, and deployment (local & cloud)",
+        "Latency, throughput, and cost optimization across LLMs and embeddings"
+      ],
+      "outcomeLabel": "Best for",
+      "outcome": "Product and engineering teams automating multi-step analysis, triage, and reporting."
+    },
+    {
+      "number": "03",
+      "icon": "advisory",
+      "tag": "Enablement & Strategy",
+      "title": "Strategic Advisory & Workshops",
+      "lead": "Practical, jargon-free guidance that takes your team from first prototype to confident production ownership.",
+      "description": "Whether you need a focused online workshop or an end-to-end workflow transformation, we equip SMEs and freelancers with the skills, architecture blueprints, and hardware guidance to own their AI stack.",
+      "deliverables": [
+        "Hands-on workshops and masterclasses on prompt engineering and loop optimization",
+        "Guided implementation of agentic workflows, skills, and developer tooling",
+        "Competent hardware selection, deployment, and maintenance roadmaps",
+        "Token, cost, and build-vs-buy strategy aligned with realistic budgets"
+      ],
+      "outcomeLabel": "Best for",
+      "outcome": "SMEs, leadership teams, and developers building internal AI capability fast."
+    }
+  ],
+  "processEyebrow": "How we work",
+  "processHeadline": "From workshop to production in four clear steps",
+  "steps": [
+    {
+      "step": "01",
+      "title": "Discovery & Audit",
+      "text": "Map high-value workflows, data sensitivity boundaries, and existing hardware constraints."
+    },
+    {
+      "step": "02",
+      "title": "Prototype & Benchmark",
+      "text": "Validate retrieval quality, model latency, and accuracy on your real documents."
+    },
+    {
+      "step": "03",
+      "title": "On-Prem Deployment",
+      "text": "Harden, containerize, and integrate RAG, MCP servers, and agent loops into your stack."
+    },
+    {
+      "step": "04",
+      "title": "Enablement & Handover",
+      "text": "Train your team with playbooks and workshops so you stay independent long-term."
+    }
+  ],
+  "ctaHeadline": "Ready to build AI you actually control?",
+  "ctaText": "Tell us about your workflows, data constraints, or workshop goals and we will outline a pragmatic path forward.",
+  "ctaButton": "Get in touch"
+}

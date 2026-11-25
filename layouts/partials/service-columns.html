@@ -19,4 +19,9 @@
             <p>No data found for file 'service_columns.json' in language folder: {{ $currentLang }}</p>
         {{ end }}
     </section>
+    {{- with site.GetPage "/services" }}
+    <div class="services-more">
+        <a class="services-more-link" href="{{ .RelPermalink }}">{{ T "servicesLearnMore" }} <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    {{- end }}
 </section>

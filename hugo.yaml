@@ -68,6 +68,10 @@ params:
 
 menus:
   main:
+    - identifier: "menuServices"
+      name: "Services"
+      pageRef: "/services"
+      weight: 8
     - identifier: "menuNews"
       name: "News"
       pageRef: "/news"

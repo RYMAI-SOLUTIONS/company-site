@@ -1,0 +1,82 @@
+{
+  "eyebrow": "Leistungen",
+  "headline": "Lokale KI für volle Kontrolle, Geschwindigkeit und messbaren Mehrwert",
+  "intro": "Wir unterstützen kleine bis mittelständische Unternehmen und Entwicklungsteams dabei, datenschutzfreundliche KI-Systeme zu entwerfen, bereitzustellen und sicher zu betreiben – von lokaler RAG- und MCP-Infrastruktur bis zu agentischen Workflows und praxisnahen Workshops.",
+  "pillars": [
+    {
+      "number": "01",
+      "icon": "rag",
+      "tag": "Infrastruktur & Retrieval",
+      "title": "Lokale RAG- & MCP-Infrastruktur",
+      "lead": "Verwandeln Sie interne Dokumente, Datenbanken und Tools in eine nachvollziehbare Intelligenzschicht, die Ihr Netzwerk nie verlässt.",
+      "description": "Wir entwickeln End-to-End-Pipelines für Retrieval-Augmented Generation (RAG) und Model Context Protocol (MCP)-Server, passgenau für Ihre Datenquellen und Ihr Hardware-Budget. Jede Anfrage, jedes Embedding und jeder Modellaufruf bleibt unter Ihrer Kontrolle.",
+      "deliverables": [
+        "Maßgeschneiderte RAG-Architektur, Dokumenten-Parsing, Chunking und hybrides Retrieval",
+        "MCP-Server-Konzeption und -Bereitstellung für lokale LLMs, Embeddings und interne APIs",
+        "Hardware-Dimensionierung, Quantisierung und Inferenz-Optimierung für Workstations oder On-Premise-Server",
+        "Datenschutz ohne Cloud-Abhängigkeit mit reproduzierbaren Modellversionen"
+      ],
+      "outcomeLabel": "Ideal für",
+      "outcome": "Regulierte Branchen, vertrauliche Wissensdatenbanken und planbare Workloads mit hohem Volumen."
+    },
+    {
+      "number": "02",
+      "icon": "agents",
+      "tag": "Workflows & Engineering",
+      "title": "Agents, Embeddings & Modellbetrieb",
+      "lead": "Von fragilen Einzel-Prompts zu zuverlässigen, toolgestützten Workflows für den produktiven Alltag.",
+      "description": "Wir entwickeln strukturierte Prompt-Loops, maßgeschneiderte Agent-Skills und Embedding-Pipelines für Open-Source- und Hybrid-Modelle – optimiert auf Genauigkeit, Latenz und Token-Effizienz ohne Anbieterbindung.",
+      "deliverables": [
+        "Prompt- und Loop-Engineering mit nachvollziehbarer Validierung und Evaluation",
+        "Implementierung agentischer Workflows, Skills und Tools für reale Geschäftsprozesse",
+        "Modell-Benchmarking, Auswahl und Bereitstellung (lokal & Cloud)",
+        "Latenz-, Durchsatz- und Kostenoptimierung für LLMs und Embeddings"
+      ],
+      "outcomeLabel": "Ideal für",
+      "outcome": "Produkt- und Entwicklerteams, die mehrstufige Analysen, Triage und Berichte automatisieren."
+    },
+    {
+      "number": "03",
+      "icon": "advisory",
+      "tag": "Befähigung & Strategie",
+      "title": "Strategische Beratung & Workshops",
+      "lead": "Praxisnahe Begleitung ohne Buzzwords – vom ersten Prototyp bis zum eigenständigen Produktivbetrieb.",
+      "description": "Ob kompakter Online-Workshop oder vollständige Workflow-Transformation: Wir vermitteln KMUs und Freiberuflern das Wissen, die Architektur-Blueprints und die Hardware-Kompetenz, um ihren KI-Stack selbst zu beherrschen.",
+      "deliverables": [
+        "Praxisnahe Workshops und Masterclasses zu Prompt-Engineering und Loop-Optimierung",
+        "Begleitete Umsetzung agentischer Workflows, Skills und Entwickler-Toolings",
+        "Kompetente Beratung zu Auswahl, Bereitstellung und Wartung lokaler Hardware",
+        "Token-, Kosten- und Build-vs.-Buy-Strategien für realistische Budgets"
+      ],
+      "outcomeLabel": "Ideal für",
+      "outcome": "KMUs, Führungsteams und Entwickler, die schnell eigene KI-Kompetenz aufbauen wollen."
+    }
+  ],
+  "processEyebrow": "Vorgehensweise",
+  "processHeadline": "In vier klaren Schritten vom Workshop in die Produktion",
+  "steps": [
+    {
+      "step": "01",
+      "title": "Analyse & Audit",
+      "text": "Identifikation wirkungsvoller Workflows, Datenschutzgrenzen und vorhandener Hardware."
+    },
+    {
+      "step": "02",
+      "title": "Prototyp & Benchmark",
+      "text": "Validierung von Retrieval-Qualität, Latenz und Antwortgüte auf Ihren realen Dokumenten."
+    },
+    {
+      "step": "03",
+      "title": "On-Premise-Rollout",
+      "text": "Absicherung, Containerisierung und Integration von RAG, MCP-Servern und Agent-Loops."
+    },
+    {
+      "step": "04",
+      "title": "Übergabe & Enablement",
+      "text": "Workshops und Dokumentation für Ihr Team, damit Sie langfristig unabhängig bleiben."
+    }
+  ],
+  "ctaHeadline": "Bereit für KI, die Sie wirklich kontrollieren?",
+  "ctaText": "Erzählen Sie uns von Ihren Workflows, Datenschutz-Anforderungen oder Workshop-Zielen – wir skizzieren einen pragmatischen Weg.",
+  "ctaButton": "Kontakt aufnehmen"
+}

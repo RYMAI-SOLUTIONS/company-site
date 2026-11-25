@@ -1,0 +1,74 @@
+{{ define "main" }}
+{{- $langData := index hugo.Data .Language.Lang -}}
+{{- $pageData := index $langData "services_page" -}}
+<section class="services-page">
+  {{- with $pageData }}
+  <header class="services-hero content">
+    <p class="eyebrow">{{ .eyebrow }}</p>
+    <h1>{{ .headline }}</h1>
+    <p class="services-hero-intro">{{ .intro }}</p>
+  </header>
+
+  <div class="services-pillars content">
+    {{- range $idx, $pillar := .pillars }}
+    <article class="service-pillar{{ if eq (mod $idx 2) 1 }} service-pillar--reverse{{ end }}">
+      <div class="service-pillar-head">
+        <div class="service-pillar-badge">
+          <span class="service-pillar-icon" aria-hidden="true">
+            {{- if eq $pillar.icon "rag" -}}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+            {{- else if eq $pillar.icon "agents" -}}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M17.5 10v4M6.5 10v7.5H14"/></svg>
+            {{- else -}}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+            {{- end -}}
+          </span>
+          <span class="service-pillar-tag">{{ $pillar.tag }}</span>
+        </div>
+        <h2>{{ $pillar.title }}</h2>
+        <p class="service-pillar-lead">{{ $pillar.lead }}</p>
+        <p class="service-pillar-desc">{{ $pillar.description }}</p>
+      </div>
+
+      <div class="service-pillar-details">
+        <ul class="service-deliverables">
+          {{- range $pillar.deliverables }}
+          <li>{{ . }}</li>
+          {{- end }}
+        </ul>
+        <div class="service-outcome">
+          <span class="service-outcome-label">{{ $pillar.outcomeLabel }}</span>
+          <p>{{ $pillar.outcome }}</p>
+        </div>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+
+  <section class="services-process content">
+    <header class="services-process-header">
+      <p class="eyebrow">{{ .processEyebrow }}</p>
+      <h2>{{ .processHeadline }}</h2>
+    </header>
+    <ol class="services-steps">
+      {{- range .steps }}
+      <li class="service-step">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  <section class="services-cta content">
+    <div class="services-cta-card">
+      <div>
+        <h2>{{ .ctaHeadline }}</h2>
+        <p>{{ .ctaText }}</p>
+      </div>
+      <a class="services-cta-btn" href="mailto:{{ site.Params.contactMail }}">{{ .ctaButton }} <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+  {{- end }}
+</section>
+{{ end }}

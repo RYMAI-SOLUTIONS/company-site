@@ -17,7 +17,7 @@
       {{- $url := .URL -}}
       {{- with .Page }}{{ $url = .RelPermalink }}{{ end -}}
       {{- $name := .Name -}}
-      {{- if eq .Identifier "menuNews" }}{{ $name = T "menuNews" }}{{ else if eq .Identifier "menuTags" }}{{ $name = T "menuTags" }}{{ end -}}
+      {{- if eq .Identifier "menuServices" }}{{ $name = T "menuItemServices" }}{{ else if eq .Identifier "menuNews" }}{{ $name = T "menuNews" }}{{ else if eq .Identifier "menuTags" }}{{ $name = T "menuTags" }}{{ end -}}
       {{- $active := or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) -}}
       {{- if and (not $active) $page.Parent (eq $page.Parent.RelPermalink $url) -}}
         {{- $active = true -}}
