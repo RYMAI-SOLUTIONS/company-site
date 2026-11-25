@@ -14,6 +14,11 @@ introTextFirst:
         Bei RYM.AI verwandeln wir komplexe Sprachmodell-Technologie (LLMs) in einen kosteneffizienten, sofort
         einsatzbereiten Motor für Ihr Alltagsgeschäft - ganz ohne Cloud-Abhängigkeit und steile Lernkurven.
 
+introTextAgency:
+    other: >
+        Als moderne, dezentrale Agentur mit Sitz in Berlin verbinden wir agile Zusammenarbeit mit direkter,
+        persönlicher Begleitung Ihrer Projekte.
+
 introTextSecond:
     other: >
         Als Experten für lokale und datenschutzkonforme KI-Anwendungen stehen wir fest an Ihrer Seite, um die perfekten
@@ -30,6 +35,8 @@ contactButton:
 
 servicesHeadline:
     other: "Unser Angebot"
+servicesLearnMore:
+    other: "Alle Leistungen entdecken"
 
 #
 # News
